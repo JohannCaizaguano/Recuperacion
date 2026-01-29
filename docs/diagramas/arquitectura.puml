@@ -1,0 +1,57 @@
+@startuml Diagrama de Paquetes - StockFlow
+
+skinparam backgroundColor #FEFEFE
+skinparam packageBorderColor #2C3E50
+skinparam packageBackgroundColor #ECF0F1
+skinparam arrowColor #34495E
+skinparam arrowThickness 2
+skinparam packageStyle frame
+
+title Diagrama de Paquetes UML - StockFlow\n(Arquitectura Cliente-Servidor 3 Capas + MVC)
+
+' ==========================================
+' CAPA CLIENTE (VISTA)
+' ==========================================
+package "Frontend" as frontend <<View>> #E8F6F3 {
+    package "pages" as pages
+    package "components" as components
+    package "services" as services
+}
+
+' ==========================================
+' CAPA SERVIDOR (CONTROLADOR + MODELO)
+' ==========================================
+package "Backend" as backend <<Controller + Model>> #FDF2E9 {
+    
+    package "routes" as routes <<Controller>>
+    package "controllers" as controllers <<Controller>>
+    package "middleware" as middleware
+    package "models" as models <<Model>>
+}
+
+' ==========================================
+' CAPA DE DATOS
+' ==========================================
+package "MongoDB" as database <<Persistence>> #EBF5FB {
+    package "Collections" as collections
+}
+
+' ==========================================
+' DEPENDENCIAS
+' ==========================================
+
+' Frontend interno
+pages ..> components : <<use>>
+pages ..> services : <<use>>
+
+' Frontend a Backend (Vista a Controlador)
+services ..> routes : <<HTTP/REST>>
+
+' Backend interno (Controlador a Modelo)
+routes ..> controllers : <<delegate>>
+controllers ..> models : <<access>>
+
+' Modelo a Base de Datos
+models ..> collections : <<Mongoose ODM>>
+
+@enduml

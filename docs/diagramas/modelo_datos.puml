@@ -1,0 +1,97 @@
+@startuml Modelo de Datos MongoDB - StockFlow
+
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam classBorderColor #2C3E50
+skinparam classBackgroundColor #ECF0F1
+skinparam arrowColor #34495E
+skinparam stereotypeCBackgroundColor #3498DB
+
+title Diagrama de Modelo de Datos (MongoDB - NoSQL)
+
+note as N1
+  <b>Nota:</b> MongoDB es una base de datos NoSQL orientada a documentos.
+  Las "relaciones" se manejan mediante referencias (ObjectId)
+  o documentos embebidos. Este diagrama muestra las colecciones
+  y sus referencias lógicas.
+end note
+
+' ==========================================
+' COLECCIONES (Documentos MongoDB)
+' ==========================================
+
+class User <<Document>> {
+  _id : ObjectId
+  --
+  username : String {unique}
+  email : String {unique}
+  password : String {hashed}
+  role : Enum [Admin, Manager, Staff]
+  --
+  createdAt : Date
+  updatedAt : Date
+}
+
+class Category <<Document>> {
+  _id : ObjectId
+  --
+  name : String
+  description : String
+}
+
+class Product <<Document>> {
+  _id : ObjectId
+  --
+  name : String
+  description : String
+  sku : String {unique}
+  quantity : Number
+  price : Number
+  category : ObjectId <<ref>>
+}
+
+class Inventory <<Document>> {
+  _id : ObjectId
+  --
+  product : ObjectId <<ref>>
+  quantityInStock : Number
+  lastRestockedDate : Date
+}
+
+class Order <<Document>> {
+  _id : ObjectId
+  --
+  user : ObjectId <<ref>>
+  products : Array [Embedded]
+  totalPrice : Number
+  orderDate : Date
+}
+
+class Transaction <<Document>> {
+  _id : ObjectId
+  --
+  user : ObjectId <<ref>>
+  products : Array [Embedded]
+  totalPrice : Number
+  transactionDate : Date
+}
+
+' Documento embebido para productos en Order/Transaction
+class ProductItem <<Embedded>> {
+  product : ObjectId <<ref>>
+  quantity : Number
+}
+
+' ==========================================
+' REFERENCIAS ENTRE DOCUMENTOS
+' ==========================================
+
+Product "N" --> "1" Category : pertenece a
+Inventory "1" --> "1" Product : rastrea stock de
+Order "N" --> "1" User : realizado por
+Order "1" *-- "N" ProductItem : contiene
+Transaction "N" --> "1" User : ejecutado por
+Transaction "1" *-- "N" ProductItem : incluye
+ProductItem "N" --> "1" Product : referencia
+
+@enduml

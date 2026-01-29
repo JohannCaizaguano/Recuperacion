@@ -1,0 +1,63 @@
+@startuml Diagrama de Procesos - StockFlow
+
+skinparam backgroundColor #FEFEFE
+skinparam activityBackgroundColor #ECF0F1
+skinparam activityBorderColor #2C3E50
+skinparam arrowColor #34495E
+
+title Diagrama de Procesos - StockFlow
+
+|#E8F6F3| Cliente |
+|#FDF2E9| Servidor |
+|#EBF5FB| MongoDB |
+
+' ==========================================
+' PROCESO DE AUTENTICACIÓN
+' ==========================================
+|Cliente|
+start
+:Enviar credenciales;
+
+|Servidor|
+:Validar y buscar usuario;
+
+|MongoDB|
+:Consultar colección Users;
+
+|Servidor|
+if (¿Autenticado?) then (sí)
+    :Generar JWT;
+    |Cliente|
+    :Acceder al sistema;
+else (no)
+    |Cliente|
+    :Mostrar error;
+    stop
+endif
+
+' ==========================================
+' PROCESO CRUD (Productos/Inventario)
+' ==========================================
+|Cliente|
+:Solicitar operación CRUD;
+
+|Servidor|
+:Verificar JWT y permisos;
+
+if (¿Autorizado?) then (sí)
+    |MongoDB|
+    :Ejecutar operación\nen colección;
+    
+    |Servidor|
+    :Retornar respuesta;
+    
+    |Cliente|
+    :Actualizar vista;
+else (no)
+    |Cliente|
+    :Error 401/403;
+endif
+
+stop
+
+@enduml
