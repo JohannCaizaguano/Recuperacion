@@ -31,7 +31,7 @@ class AppError extends Error {
  * Centralized error handler middleware
  * Handles all errors thrown in the application
  */
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res, _next) => {
     // Default values
     let statusCode = err.statusCode || 500;
     let errorCode = err.errorCode || ERROR_CODES.INTERNAL_ERROR;
