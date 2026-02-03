@@ -30,15 +30,19 @@ const register = async (req, res) => {
  */
 const login = async (req, res) => {
     try {
+        console.log('[UserController] Login attempt:', req.body.email);
         const { email, password } = req.body;
         const result = await findUserByCredentials(email, password);
 
         if (!result.success) {
+            console.log('[UserController] Login failed:', result.message);
             return res.status(result.statusCode).json({ message: result.message });
         }
 
+        console.log('[UserController] Login success');
         res.json(result.data);
     } catch (error) {
+        console.error('[UserController] Login error:', error);
         res.status(500).json({ message: error.message });
     }
 };

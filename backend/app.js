@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 // Custom routes imports
 const productRoutes = require('./routes/ProductRoutes');
@@ -16,7 +17,61 @@ const inventoryRoutes = require('./routes/InventoryRoutes');
 const app = express();
 
 // Middleware
-app.use(cors());
+const whitelist = [
+    'http://localhost',
+    'http://localhost:80',
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:8080',
+    'http://127.0.0.1',
+    'http://127.0.0.1:80',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:8080',
+    'http://172.21.0.1',
+    // Agregar más orígenes según sea necesario
+    process.env.FRONTEND_URL,
+].filter(Boolean); // Eliminar valores undefined/null
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Log para debugging de CORS
+        if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+            console.log(`[CORS] Petición desde origen: ${origin || 'sin origen (mismo servidor o herramienta)'}`);
+        }
+
+        // Allow requests with no origin (like mobile apps, curl, Postman)
+        if (!origin) {
+            return callback(null, true);
+        }
+
+        // En desarrollo, permitir todos los orígenes localhost
+        if (process.env.NODE_ENV !== 'production') {
+            if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+                return callback(null, true);
+            }
+        }
+
+        // Verificar whitelist
+        if (whitelist.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.warn(`[CORS] ⚠️ Origen bloqueado: ${origin}`);
+            console.warn(`[CORS] Orígenes permitidos: ${whitelist.join(', ')}`);
+            callback(new Error(`CORS: Origen no permitido - ${origin}`));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'X-Origin'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
+    credentials: true,
+    maxAge: 86400, // Cache preflight por 24 horas
+    optionsSuccessStatus: 200, // Para navegadores legacy
+};
+
+// Manejar preflight para todas las rutas
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '10mb' }));
 
 // Only use morgan in non-test environment
@@ -47,39 +102,9 @@ app.get('/', (req, res) => {
 });
 
 // 404 handler
-app.use((req, res) => {
-    res.status(404).json({ message: 'Route not found' });
-});
+app.use(notFoundHandler);
 
-// Error handling middleware
-app.use((err, req, res, _next) => {
-    if (process.env.NODE_ENV !== 'test') {
-        console.error(`[Error] ${err.message}`);
-        console.error(err.stack);
-    }
-
-    // Mongoose validation error
-    if (err.name === 'ValidationError') {
-        return res.status(400).json({
-            message: 'Validation error',
-            errors: Object.values(err.errors).map(e => e.message),
-        });
-    }
-
-    // Mongoose duplicate key error
-    if (err.code === 11000) {
-        const field = Object.keys(err.keyValue)[0];
-        return res.status(400).json({
-            message: `${field} already exists`,
-        });
-    }
-
-    // Default error response
-    res.status(err.status || 500).json({
-        message: process.env.NODE_ENV === 'production'
-            ? 'Internal server error'
-            : err.message,
-    });
-});
+// Centralized error handling middleware
+app.use(errorHandler);
 
 module.exports = app;

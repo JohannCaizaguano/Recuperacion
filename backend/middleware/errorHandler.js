@@ -73,6 +73,19 @@ const errorHandler = (err, req, res, next) => {
         message = 'Token expired';
     }
 
+    // Handle CORS errors
+    if (err.message && err.message.includes('CORS')) {
+        statusCode = 403;
+        errorCode = ERROR_CODES.FORBIDDEN;
+        message = err.message;
+        console.error('[CORS Error]', {
+            origin: req.get('origin'),
+            referer: req.get('referer'),
+            method: req.method,
+            path: req.path,
+        });
+    }
+
     // Log error in development
     if (process.env.NODE_ENV !== 'production') {
         console.error('Error:', {
