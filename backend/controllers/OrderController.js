@@ -1,66 +1,87 @@
-const Order = require('../models/OrderModel');
+// controllers/OrderController.js
+const {
+    findAllOrders,
+    findOrderById,
+    createOrder,
+    updateOrder,
+    deleteOrder,
+} = require('../services/OrderService');
 
+/**
+ * Get all orders
+ */
 const getAllOrders = async (req, res) => {
     try {
-        const orders = await Order.find();
+        const orders = await findAllOrders();
         res.json(orders);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
+/**
+ * Get order by ID
+ */
 const getOrderById = async (req, res) => {
     try {
-        const order = await Order.findById(req.params.id);
-        if (!order) {
-            return res.status(404).json({ message: 'Order not found' });
+        const result = await findOrderById(req.params.id);
+
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
-        res.json(order);
+
+        res.json(result.data);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-const createOrder = async (req, res) => {
+/**
+ * Create order
+ */
+const createOrderHandler = async (req, res) => {
     try {
-        const { products, totalAmount } = req.body;
+        const result = await createOrder(req.body);
 
-        // Validate required fields
-        if (!products || !totalAmount) {
-            return res.status(400).json({ message: 'Products and totalAmount are required' });
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
 
-        const newOrder = new Order({ products, totalAmount });
-        const savedOrder = await newOrder.save();
-        res.status(201).json(savedOrder);
+        res.status(201).json(result.data);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-const updateOrder = async (req, res) => {
+/**
+ * Update order
+ */
+const updateOrderHandler = async (req, res) => {
     try {
-        const updatedOrder = await Order.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true, runValidators: true },
-        );
-        if (!updatedOrder) {
-            return res.status(404).json({ message: 'Order not found' });
+        const result = await updateOrder(req.params.id, req.body);
+
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
-        res.json(updatedOrder);
+
+        res.json(result.data);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-const deleteOrder = async (req, res) => {
+/**
+ * Delete order
+ */
+const deleteOrderHandler = async (req, res) => {
     try {
-        const deletedOrder = await Order.findByIdAndDelete(req.params.id);
-        if (!deletedOrder) {
-            return res.status(404).json({ message: 'Order not found' });
+        const result = await deleteOrder(req.params.id);
+
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
-        res.json({ message: 'Order deleted successfully' });
+
+        res.json({ message: result.message });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -69,7 +90,7 @@ const deleteOrder = async (req, res) => {
 module.exports = {
     getAllOrders,
     getOrderById,
-    createOrder,
-    updateOrder,
-    deleteOrder,
+    createOrder: createOrderHandler,
+    updateOrder: updateOrderHandler,
+    deleteOrder: deleteOrderHandler,
 };

@@ -1,121 +1,130 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/UserModel');
-const { jwtSecret, jwtExpiresIn } = require('../config/config');
+// controllers/UserController.js
+const {
+    findUserByCredentials,
+    createUser,
+    findAllUsers,
+    findUserById,
+    updateUser,
+    deleteUser,
+} = require('../services/UserService');
 
-// Generate JWT token
-const generateToken = (userId) => {
-    return jwt.sign({ userId }, jwtSecret, { expiresIn: jwtExpiresIn });
-};
-
-// Register new user
+/**
+ * Register new user
+ */
 const register = async (req, res) => {
     try {
-        const { username, password, email, role } = req.body;
+        const result = await createUser(req.body);
 
-        // Check if user already exists
-        const existingUser = await User.findOne({
-            $or: [{ email }, { username }],
-        });
-        if (existingUser) {
-            return res.status(400).json({ message: 'User with this email or username already exists.' });
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
 
-        const user = new User({ username, password, email, role });
-        await user.save();
-
-        const token = generateToken(user._id);
-        res.status(201).json({ user, token });
+        res.status(201).json(result.data);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-// Login user
+/**
+ * Login user
+ */
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
+        const result = await findUserByCredentials(email, password);
 
-        if (!email || !password) {
-            return res.status(400).json({ message: 'Email and password are required.' });
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
 
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(401).json({ message: 'Invalid email or password.' });
-        }
-
-        const isMatch = await user.comparePassword(password);
-        if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid email or password.' });
-        }
-
-        const token = generateToken(user._id);
-        res.json({ user, token });
+        res.json(result.data);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-// Get current user profile
+/**
+ * Get current user profile
+ */
 const getProfile = async (req, res) => {
     res.json(req.user);
 };
 
+/**
+ * Get all users
+ */
 const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find();
+        const users = await findAllUsers();
         res.json(users);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
+/**
+ * Get user by ID
+ */
 const getUserById = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+        const result = await findUserById(req.params.id);
+
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
-        res.json(user);
+
+        res.json(result.data);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-const createUser = async (req, res) => {
+/**
+ * Create user (admin)
+ */
+const createUserHandler = async (req, res) => {
     try {
-        const { username, password, email, role } = req.body;
-        const newUser = new User({ username, password, email, role });
-        const savedUser = await newUser.save();
-        res.status(201).json(savedUser);
+        const result = await createUser(req.body);
+
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
+        }
+
+        res.status(201).json(result.data.user);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-const updateUser = async (req, res) => {
+/**
+ * Update user
+ */
+const updateUserHandler = async (req, res) => {
     try {
-        const updatedUser = await User.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true, runValidators: true },
-        );
-        if (!updatedUser) {
-            return res.status(404).json({ message: 'User not found' });
+        const result = await updateUser(req.params.id, req.body);
+
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
-        res.json(updatedUser);
+
+        res.json(result.data);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-const deleteUser = async (req, res) => {
+/**
+ * Delete user
+ */
+const deleteUserHandler = async (req, res) => {
     try {
-        const deletedUser = await User.findByIdAndDelete(req.params.id);
-        if (!deletedUser) {
-            return res.status(404).json({ message: 'User not found' });
+        const result = await deleteUser(req.params.id);
+
+        if (!result.success) {
+            return res.status(result.statusCode).json({ message: result.message });
         }
-        res.json({ message: 'User deleted successfully' });
+
+        res.json({ message: result.message });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -127,7 +136,7 @@ module.exports = {
     getProfile,
     getAllUsers,
     getUserById,
-    createUser,
-    updateUser,
-    deleteUser,
+    createUser: createUserHandler,
+    updateUser: updateUserHandler,
+    deleteUser: deleteUserHandler,
 };
