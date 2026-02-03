@@ -13,7 +13,7 @@ const AUTH_ERROR_CODES = {
     TOKEN_EXPIRED: 'AUTH_TOKEN_EXPIRED',
     USER_NOT_FOUND: 'AUTH_USER_NOT_FOUND',
     USER_INACTIVE: 'AUTH_USER_INACTIVE',
-    AUTH_ERROR: 'AUTH_ERROR'
+    AUTH_ERROR: 'AUTH_ERROR',
 };
 
 /**
@@ -39,7 +39,7 @@ const auth = async (req, res, next) => {
         if (!authHeader) {
             return res.status(401).json({
                 message: 'Access denied. No token provided.',
-                errorCode: AUTH_ERROR_CODES.NO_TOKEN
+                errorCode: AUTH_ERROR_CODES.NO_TOKEN,
             });
         }
 
@@ -50,7 +50,7 @@ const auth = async (req, res, next) => {
         if (!match) {
             return res.status(401).json({
                 message: 'Access denied. Invalid authorization format. Expected: Bearer <token>',
-                errorCode: AUTH_ERROR_CODES.INVALID_BEARER_FORMAT
+                errorCode: AUTH_ERROR_CODES.INVALID_BEARER_FORMAT,
             });
         }
 
@@ -61,7 +61,7 @@ const auth = async (req, res, next) => {
         if (!token) {
             return res.status(401).json({
                 message: 'Access denied. Token is empty.',
-                errorCode: AUTH_ERROR_CODES.NO_TOKEN
+                errorCode: AUTH_ERROR_CODES.NO_TOKEN,
             });
         }
 
@@ -75,19 +75,19 @@ const auth = async (req, res, next) => {
                 return res.status(401).json({
                     message: 'Token expired. Please log in again.',
                     errorCode: AUTH_ERROR_CODES.TOKEN_EXPIRED,
-                    expiredAt: jwtError.expiredAt
+                    expiredAt: jwtError.expiredAt,
                 });
             }
             if (jwtError.name === 'JsonWebTokenError') {
                 return res.status(401).json({
                     message: 'Invalid token. Token malformed or signature verification failed.',
-                    errorCode: AUTH_ERROR_CODES.INVALID_TOKEN
+                    errorCode: AUTH_ERROR_CODES.INVALID_TOKEN,
                 });
             }
             if (jwtError.name === 'NotBeforeError') {
                 return res.status(401).json({
                     message: 'Token not yet active.',
-                    errorCode: AUTH_ERROR_CODES.INVALID_TOKEN
+                    errorCode: AUTH_ERROR_CODES.INVALID_TOKEN,
                 });
             }
             // Re-throw unknown JWT errors
@@ -98,7 +98,7 @@ const auth = async (req, res, next) => {
         if (!decoded.userId) {
             return res.status(401).json({
                 message: 'Invalid token. Missing user identifier.',
-                errorCode: AUTH_ERROR_CODES.INVALID_TOKEN
+                errorCode: AUTH_ERROR_CODES.INVALID_TOKEN,
             });
         }
 
@@ -111,7 +111,7 @@ const auth = async (req, res, next) => {
         if (!user) {
             return res.status(403).json({
                 message: 'Access denied. User not found.',
-                errorCode: AUTH_ERROR_CODES.USER_NOT_FOUND
+                errorCode: AUTH_ERROR_CODES.USER_NOT_FOUND,
             });
         }
 
@@ -119,7 +119,7 @@ const auth = async (req, res, next) => {
         if (user.isActive === false) {
             return res.status(403).json({
                 message: 'Access denied. User account is deactivated.',
-                errorCode: AUTH_ERROR_CODES.USER_INACTIVE
+                errorCode: AUTH_ERROR_CODES.USER_INACTIVE,
             });
         }
 
@@ -133,7 +133,7 @@ const auth = async (req, res, next) => {
 
         res.status(500).json({
             message: 'Internal authentication error.',
-            errorCode: AUTH_ERROR_CODES.AUTH_ERROR
+            errorCode: AUTH_ERROR_CODES.AUTH_ERROR,
         });
     }
 };

@@ -1,15 +1,23 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../app');
+// eslint-disable-next-line no-unused-vars
 const Product = require('../models/ProductModel');
+// eslint-disable-next-line no-unused-vars
 const Transaction = require('../models/TransactionModel');
+// eslint-disable-next-line no-unused-vars
 const User = require('../models/UserModel');
+// eslint-disable-next-line no-unused-vars
 const Category = require('../models/CategoryModel');
 
-// Mock data for testing
+// Mock data for testing (reserved for future integration tests)
+// eslint-disable-next-line no-unused-vars
 let testUser;
+// eslint-disable-next-line no-unused-vars
 let testCategory;
+// eslint-disable-next-line no-unused-vars
 let testProduct;
+// eslint-disable-next-line no-unused-vars
 let authToken;
 
 describe('Transaction Controller - Atomic Validation', () => {
