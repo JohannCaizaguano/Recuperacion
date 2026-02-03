@@ -1,0 +1,260 @@
+
+> frontend@0.1.0 test
+> react-scripts test src/pages/__tests__/Dashboard.test.js --watchAll=false
+
+  console.error
+    Warning: `ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
+
+    [0m [90m 33 |[39m         ordersAPI[33m.[39mgetAll[33m.[39mmockReturnValue([36mnew[39m [33mPromise[39m(() [33m=>[39m { }))[33m;[39m
+     [90m 34 |[39m
+    [31m[1m>[22m[39m[90m 35 |[39m         render(
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 36 |[39m             [33m<[39m[33mBrowserRouter[39m[33m>[39m
+     [90m 37 |[39m                 [33m<[39m[33mDashboard[39m [33m/[39m[33m>[39m
+     [90m 38 |[39m             [33m<[39m[33m/[39m[33mBrowserRouter[39m[33m>[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:71:30)
+      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:45:7)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1736:7)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:35:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.warn
+    ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+
+    [0m [90m 33 |[39m         ordersAPI[33m.[39mgetAll[33m.[39mmockReturnValue([36mnew[39m [33mPromise[39m(() [33m=>[39m { }))[33m;[39m
+     [90m 34 |[39m
+    [31m[1m>[22m[39m[90m 35 |[39m         render(
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 36 |[39m             [33m<[39m[33mBrowserRouter[39m[33m>[39m
+     [90m 37 |[39m                 [33m<[39m[33mDashboard[39m [33m/[39m[33m>[39m
+     [90m 38 |[39m             [33m<[39m[33m/[39m[33mBrowserRouter[39m[33m>[39m[0m
+
+      at warnOnce (node_modules/react-router/lib/deprecations.ts:9:13)
+      at logDeprecation (node_modules/react-router/lib/deprecations.ts:14:3)
+      at Object.logV6DeprecationWarnings [as UNSAFE_logV6DeprecationWarnings] (node_modules/react-router/lib/deprecations.ts:26:5)
+      at node_modules/react-router-dom/index.tsx:816:25
+      at commitHookEffectListMount (node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+      at commitPassiveMountOnFiber (node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:35:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.warn
+    ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+    [0m [90m 33 |[39m         ordersAPI[33m.[39mgetAll[33m.[39mmockReturnValue([36mnew[39m [33mPromise[39m(() [33m=>[39m { }))[33m;[39m
+     [90m 34 |[39m
+    [31m[1m>[22m[39m[90m 35 |[39m         render(
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 36 |[39m             [33m<[39m[33mBrowserRouter[39m[33m>[39m
+     [90m 37 |[39m                 [33m<[39m[33mDashboard[39m [33m/[39m[33m>[39m
+     [90m 38 |[39m             [33m<[39m[33m/[39m[33mBrowserRouter[39m[33m>[39m[0m
+
+      at warnOnce (node_modules/react-router/lib/deprecations.ts:9:13)
+      at logDeprecation (node_modules/react-router/lib/deprecations.ts:14:3)
+      at Object.logV6DeprecationWarnings [as UNSAFE_logV6DeprecationWarnings] (node_modules/react-router/lib/deprecations.ts:37:5)
+      at node_modules/react-router-dom/index.tsx:816:25
+      at commitHookEffectListMount (node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+      at commitPassiveMountOnFiber (node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:35:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+FAIL src/pages/__tests__/Dashboard.test.js
+  Dashboard Component Resilience
+    ΓêÜ Req 3: Renderiza estado de carga inicialmente (127 ms)
+    ├ù Req 3: Maneja respuestas vacias sin errores (26 ms)
+
+  ΓùÅ Dashboard Component Resilience ΓÇ║ Req 3: Maneja respuestas vacias sin errores
+
+    TestingLibraryElementError: Found multiple elements with the text: /0/i
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, script, style
+    <p
+      class="text-4xl"
+    >
+      0
+    </p>
+
+    Ignored nodes: comments, script, style
+    <p
+      class="text-4xl"
+    >
+      0
+    </p>
+
+    Ignored nodes: comments, script, style
+    <p
+      class="text-4xl"
+    >
+      Γé╣ 
+      0
+    </p>
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="flex flex-col"
+        >
+          <div
+            class="flex flex-1"
+          >
+            <main
+              class="flex-1 p-6"
+            >
+              <h1
+                class="text-3xl font-semibold mb-4"
+              >
+                Dashboard
+              </h1>
+              <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-4"
+              >
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2 text-gray-800"
+                  >
+                    Total Products
+                  </h2>
+                  <p
+                    class="text-4xl"
+                  >
+                    0
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2 text-gray-800"
+                  >
+                    Total Orders
+                  </h2>
+                  <p
+                    class="text-4xl"
+                  >
+                    0
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2 text-gray-800"
+                  >
+                    Total Turnover
+                  </h2>
+                  <p
+                    class="text-4xl"
+                  >
+                    Γé╣ 
+                    0
+                  </p>
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
+              >
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2"
+                  >
+                    Data Visualization
+                  </h2>
+                  <p
+                    class="text-gray-500"
+                  >
+                    No data available to visualize
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2"
+                  >
+                    Recent Transactions
+                  </h2>
+                  <p
+                    class="text-gray-500"
+                  >
+                    No recent transactions
+                  </p>
+                  <a
+                    class="text-blue-500 hover:underline mt-2 inline-block"
+                    href="/transactions"
+                  >
+                    View all transactions
+                  </a>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </body>
+
+      62 |         // Check for fallback text or empty state elements
+      63 |         expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
+    > 64 |         expect(screen.getByText(/0/i)).toBeInTheDocument(); // Expect zeros for empty data
+         |                       ^
+      65 |     });
+      66 | });
+      67 |
+
+      at Object.getElementError (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at getElementError (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:20:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:23:10)
+      at node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+      at getByText (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:64:23)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 passed, 2 total
+Snapshots:   0 total
+Time:        2.181 s, estimated 3 s
+Ran all test suites matching /src\\pages\\__tests__\\Dashboard.test.js/i.

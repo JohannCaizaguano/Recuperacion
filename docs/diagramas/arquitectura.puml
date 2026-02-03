@@ -7,7 +7,7 @@ skinparam arrowColor #34495E
 skinparam arrowThickness 2
 skinparam packageStyle frame
 
-title Diagrama de Paquetes UML - StockFlow\n(Arquitectura Cliente-Servidor 3 Capas + MVC)
+title Arquitectura Cliente-Servidor 3 Capas + MVC
 
 ' ==========================================
 ' CAPA CLIENTE (VISTA)

@@ -7,9 +7,6 @@ skinparam arrowColor #34495E
 
 title Diagrama de Procesos - StockFlow
 
-|#E8F6F3| Cliente |
-|#FDF2E9| Servidor |
-|#EBF5FB| MongoDB |
 
 ' ==========================================
 ' PROCESO DE AUTENTICACIÓN

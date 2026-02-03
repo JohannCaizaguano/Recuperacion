@@ -1,0 +1,396 @@
+
+> frontend@0.1.0 test
+> react-scripts test src/pages/__tests__/Dashboard.test.js --watchAll=false
+
+  console.error
+    Warning: `ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
+
+    [0m [90m 27 |[39m         api[33m.[39mgetInventory[33m.[39mmockReturnValue([36mnew[39m [33mPromise[39m(() [33m=>[39m { }))[33m;[39m
+     [90m 28 |[39m
+    [31m[1m>[22m[39m[90m 29 |[39m         render(
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 30 |[39m             [33m<[39m[33mBrowserRouter[39m[33m>[39m
+     [90m 31 |[39m                 [33m<[39m[33mDashboard[39m [33m/[39m[33m>[39m
+     [90m 32 |[39m             [33m<[39m[33m/[39m[33mBrowserRouter[39m[33m>[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:71:30)
+      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:45:7)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1736:7)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:29:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    Error inesperado en fetchDashboardData: TypeError: Cannot read properties of undefined (reading 'getAll')
+        at fetchDashboardData (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\src\pages\Dashboard.js:23:33)
+        at C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\src\pages\Dashboard.js:96:9
+        at commitHookEffectListMount (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:23189:26)
+        at commitPassiveMountOnFiber (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24970:11)
+        at commitPassiveMountEffects_complete (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24930:9)
+        at commitPassiveMountEffects_begin (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24917:7)
+        at commitPassiveMountEffects (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24905:3)
+        at flushPassiveEffectsImpl (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:27078:3)
+        at flushPassiveEffects (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:27023:14)
+        at C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:26808:9
+        at flushActQueue (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react\cjs\react.development.js:2667:24)
+        at act (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react\cjs\react.development.js:2582:11)
+        at actWithWarning (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom-test-utils.development.js:1740:10)
+        at C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@testing-library\react\dist\act-compat.js:63:25
+        at renderRoot (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@testing-library\react\dist\pure.js:159:26)
+        at render (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@testing-library\react\dist\pure.js:246:10)
+        at Object.<anonymous> (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\src\pages\__tests__\Dashboard.test.js:29:15)
+        at Promise.then.completed (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\utils.js:391:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\utils.js:316:10)
+        at _callCircusTest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:218:40)
+        at _runTest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:155:3)
+        at _runTestsForDescribeBlock (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:66:9)
+        at _runTestsForDescribeBlock (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:60:9)
+        at run (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:25:3)
+        at runAndTransformResultsToJestFormat (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:170:21)
+        at jestAdapter (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:82:19)
+        at runTestInternal (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-runner\build\runTest.js:389:16)
+        at runTest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-runner\build\runTest.js:475:34)
+        at TestRunner.runTests (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-runner\build\index.js:101:12)
+        at TestScheduler.scheduleTests (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\TestScheduler.js:333:13)
+        at runJest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\runJest.js:404:19)
+        at _run10000 (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\cli\index.js:320:7)
+        at runCLI (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\cli\index.js:173:3)
+        at Object.run (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-cli\build\cli\index.js:155:37)
+
+    [0m [90m 87 |[39m
+     [90m 88 |[39m             } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 89 |[39m                 console[33m.[39merror([32m'Error inesperado en fetchDashboardData:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m                         [31m[1m^[22m[39m
+     [90m 90 |[39m                 setError([32m'Ocurri├│ un error inesperado. Por favor, intente de nuevo.'[39m)[33m;[39m
+     [90m 91 |[39m             } [36mfinally[39m {
+     [90m 92 |[39m                 setLoading([36mfalse[39m)[33m;[39m[0m
+
+      at fetchDashboardData (src/pages/Dashboard.js:89:25)
+      at src/pages/Dashboard.js:96:9
+      at commitHookEffectListMount (node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+      at commitPassiveMountOnFiber (node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:29:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.warn
+    ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+
+    [0m [90m 27 |[39m         api[33m.[39mgetInventory[33m.[39mmockReturnValue([36mnew[39m [33mPromise[39m(() [33m=>[39m { }))[33m;[39m
+     [90m 28 |[39m
+    [31m[1m>[22m[39m[90m 29 |[39m         render(
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 30 |[39m             [33m<[39m[33mBrowserRouter[39m[33m>[39m
+     [90m 31 |[39m                 [33m<[39m[33mDashboard[39m [33m/[39m[33m>[39m
+     [90m 32 |[39m             [33m<[39m[33m/[39m[33mBrowserRouter[39m[33m>[39m[0m
+
+      at warnOnce (node_modules/react-router/lib/deprecations.ts:9:13)
+      at logDeprecation (node_modules/react-router/lib/deprecations.ts:14:3)
+      at Object.logV6DeprecationWarnings [as UNSAFE_logV6DeprecationWarnings] (node_modules/react-router/lib/deprecations.ts:26:5)
+      at node_modules/react-router-dom/index.tsx:816:25
+      at commitHookEffectListMount (node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+      at commitPassiveMountOnFiber (node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:29:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.warn
+    ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+    [0m [90m 27 |[39m         api[33m.[39mgetInventory[33m.[39mmockReturnValue([36mnew[39m [33mPromise[39m(() [33m=>[39m { }))[33m;[39m
+     [90m 28 |[39m
+    [31m[1m>[22m[39m[90m 29 |[39m         render(
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 30 |[39m             [33m<[39m[33mBrowserRouter[39m[33m>[39m
+     [90m 31 |[39m                 [33m<[39m[33mDashboard[39m [33m/[39m[33m>[39m
+     [90m 32 |[39m             [33m<[39m[33m/[39m[33mBrowserRouter[39m[33m>[39m[0m
+
+      at warnOnce (node_modules/react-router/lib/deprecations.ts:9:13)
+      at logDeprecation (node_modules/react-router/lib/deprecations.ts:14:3)
+      at Object.logV6DeprecationWarnings [as UNSAFE_logV6DeprecationWarnings] (node_modules/react-router/lib/deprecations.ts:37:5)
+      at node_modules/react-router-dom/index.tsx:816:25
+      at commitHookEffectListMount (node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+      at commitPassiveMountOnFiber (node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:29:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    Error inesperado en fetchDashboardData: TypeError: Cannot read properties of undefined (reading 'getAll')
+        at fetchDashboardData (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\src\pages\Dashboard.js:23:33)
+        at C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\src\pages\Dashboard.js:96:9
+        at commitHookEffectListMount (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:23189:26)
+        at commitPassiveMountOnFiber (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24970:11)
+        at commitPassiveMountEffects_complete (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24930:9)
+        at commitPassiveMountEffects_begin (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24917:7)
+        at commitPassiveMountEffects (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:24905:3)
+        at flushPassiveEffectsImpl (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:27078:3)
+        at flushPassiveEffects (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:27023:14)
+        at C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom.development.js:26808:9
+        at flushActQueue (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react\cjs\react.development.js:2667:24)
+        at act (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react\cjs\react.development.js:2582:11)
+        at actWithWarning (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\react-dom\cjs\react-dom-test-utils.development.js:1740:10)
+        at C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@testing-library\react\dist\act-compat.js:63:25
+        at renderRoot (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@testing-library\react\dist\pure.js:159:26)
+        at render (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@testing-library\react\dist\pure.js:246:10)
+        at Object.<anonymous> (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\src\pages\__tests__\Dashboard.test.js:46:15)
+        at Promise.then.completed (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\utils.js:391:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\utils.js:316:10)
+        at _callCircusTest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:218:40)
+        at _runTest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:155:3)
+        at _runTestsForDescribeBlock (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:66:9)
+        at _runTestsForDescribeBlock (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:60:9)
+        at run (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\run.js:25:3)
+        at runAndTransformResultsToJestFormat (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:170:21)
+        at jestAdapter (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:82:19)
+        at runTestInternal (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-runner\build\runTest.js:389:16)
+        at runTest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-runner\build\runTest.js:475:34)
+        at TestRunner.runTests (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-runner\build\index.js:101:12)
+        at TestScheduler.scheduleTests (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\TestScheduler.js:333:13)
+        at runJest (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\runJest.js:404:19)
+        at _run10000 (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\cli\index.js:320:7)
+        at runCLI (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\@jest\core\build\cli\index.js:173:3)
+        at Object.run (C:\Users\Johann\Desktop\Octavo\Api 2\StockFlow\frontend\node_modules\jest-cli\build\cli\index.js:155:37)
+
+    [0m [90m 87 |[39m
+     [90m 88 |[39m             } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 89 |[39m                 console[33m.[39merror([32m'Error inesperado en fetchDashboardData:'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m                         [31m[1m^[22m[39m
+     [90m 90 |[39m                 setError([32m'Ocurri├│ un error inesperado. Por favor, intente de nuevo.'[39m)[33m;[39m
+     [90m 91 |[39m             } [36mfinally[39m {
+     [90m 92 |[39m                 setLoading([36mfalse[39m)[33m;[39m[0m
+
+      at fetchDashboardData (src/pages/Dashboard.js:89:25)
+      at src/pages/Dashboard.js:96:9
+      at commitHookEffectListMount (node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+      at commitPassiveMountOnFiber (node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:46:15)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+FAIL src/pages/__tests__/Dashboard.test.js
+  Dashboard Component Resilience
+    ├ù Req 3: Renderiza estado de carga inicialmente (167 ms)
+    ΓêÜ Req 3: Maneja respuestas vacias sin errores (17 ms)
+
+  ΓùÅ Dashboard Component Resilience ΓÇ║ Req 3: Renderiza estado de carga inicialmente
+
+    TestingLibraryElementError: Unable to find an element with the text: /cargando/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="flex flex-col"
+        >
+          <div
+            class="flex flex-1"
+          >
+            <main
+              class="flex-1 p-6"
+            >
+              <h1
+                class="text-3xl font-semibold mb-4"
+              >
+                Dashboard
+              </h1>
+              <div
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4"
+                role="alert"
+              >
+                <div
+                  class="flex items-center"
+                >
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span>
+                    Ocurri├│ un error inesperado. Por favor, intente de nuevo.
+                  </span>
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-4"
+              >
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2 text-gray-800"
+                  >
+                    Total Products
+                  </h2>
+                  <p
+                    class="text-4xl"
+                  >
+                    0
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2 text-gray-800"
+                  >
+                    Total Orders
+                  </h2>
+                  <p
+                    class="text-4xl"
+                  >
+                    0
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2 text-gray-800"
+                  >
+                    Total Turnover
+                  </h2>
+                  <p
+                    class="text-4xl"
+                  >
+                    Γé╣ 
+                    0
+                  </p>
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
+              >
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2"
+                  >
+                    Data Visualization
+                  </h2>
+                  <p
+                    class="text-gray-500"
+                  >
+                    No data available to visualize
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-6 rounded shadow-md"
+                >
+                  <h2
+                    class="text-xl font-semibold mb-2"
+                  >
+                    Recent Transactions
+                  </h2>
+                  <p
+                    class="text-gray-500"
+                  >
+                    No recent transactions
+                  </p>
+                  <a
+                    class="text-blue-500 hover:underline mt-2 inline-block"
+                    href="/transactions"
+                  >
+                    View all transactions
+                  </a>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </body>
+
+      34 |
+      35 |         // Should show loading indicator (adjust text based on actual component)
+    > 36 |         expect(screen.getByText(/cargando/i)).toBeInTheDocument();
+         |                       ^
+      37 |     });
+      38 |
+      39 |     test('Req 3: Maneja respuestas vacias sin errores', async () => {
+
+      at Object.getElementError (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByText (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/pages/__tests__/Dashboard.test.js:36:23)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 passed, 2 total
+Snapshots:   0 total
+Time:        2.269 s, estimated 4 s
+Ran all test suites matching /src\\pages\\__tests__\\Dashboard.test.js/i.

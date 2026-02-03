@@ -1,0 +1,43 @@
+@startuml Diagrama de Despliegue
+skinparam backgroundColor #FEFEFE
+skinparam componentBackgroundColor #ECF0F1
+skinparam componentBorderColor #2C3E50
+skinparam arrowColor #34495E
+skinparam nodeBackgroundColor #ECF0F1
+skinparam nodeBorderColor #2C3E50
+skinparam interfaceBackgroundColor #ECF0F1
+skinparam interfaceBorderColor #2C3E50
+skinparam databaseBackgroundColor #ECF0F1
+skinparam databaseBorderColor #2C3E50
+title Diagrama de Despliegue - StockFlow
+
+node "Cliente" {
+    component "Navegador Web" as Browser
+}
+
+node "Servidor de Aplicaciones (Docker Host)" {
+    node "Red Docker (stockflow-network)" {
+        
+        node "Contenedor Frontend" as Cont_Frontend {
+            component "Nginx Web Server" as Nginx
+            artifact "React SPA" as ReactApp
+            Nginx *--> ReactApp
+        }
+        
+        node "Contenedor Backend" as Cont_Backend {
+            component "Node.js Server" as NodeServer
+            artifact "Express API" as ApiApp
+            NodeServer *--> ApiApp
+        }
+        
+        node "Contenedor Base de Datos" as Cont_DB {
+            database "MongoDB" as MongoDB
+        }
+    }
+}
+
+Browser --> Nginx : HTTP (Puerto 80)
+Nginx --> NodeServer : API Calls / AJAX (Puerto 5000)
+NodeServer --> MongoDB : Conexión DB (Puerto 27017)
+
+@enduml

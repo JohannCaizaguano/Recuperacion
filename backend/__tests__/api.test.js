@@ -27,7 +27,7 @@ describe('API Endpoints', () => {
             const res = await request(app).get('/unknown-route');
 
             expect(res.statusCode).toBe(404);
-            expect(res.body.message).toBe('Route not found');
+            expect(res.body.message).toBe('Cannot GET /unknown-route');
         });
     });
 

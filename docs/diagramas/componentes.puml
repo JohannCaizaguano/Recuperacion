@@ -1,0 +1,53 @@
+@startuml Diagrama de Componentes
+skinparam backgroundColor #FEFEFE
+skinparam componentBackgroundColor #ECF0F1
+skinparam componentBorderColor #2C3E50
+skinparam arrowColor #34495E
+skinparam nodeBackgroundColor #ECF0F1
+skinparam nodeBorderColor #2C3E50
+skinparam interfaceBackgroundColor #ECF0F1
+skinparam interfaceBorderColor #2C3E50
+skinparam databaseBackgroundColor #ECF0F1
+skinparam databaseBorderColor #2C3E50
+title Diagrama de Componentes - StockFlow
+
+package "Frontend (React)" {
+  component "Componentes UI" as UI
+  component "Gestión de Estado" as State
+  component "Servicios API" as ApiClient
+  
+  UI ..> State
+  UI --> ApiClient
+}
+
+package "Backend (Node.js/Express)" {
+  interface "API REST" as API
+  
+  component "Rutas (Routes)" as Routes
+  component "Middleware" as Middleware
+  component "Controladores (Controllers)" as Controllers
+  component "Servicios (Services)" as Services
+  component "Modelos (Models)" as Models
+  
+  API - Routes
+  Routes --> Middleware
+  Routes --> Controllers
+  Controllers --> Services
+  Services --> Models
+}
+
+database "Base de Datos" {
+  component "MongoDB" as DB
+}
+
+ApiClient --> API : HTTP/JSON
+Models --> DB : Drivers Mongoose (TCP)
+
+note right of Services
+  Lógica de Negocio:
+  - Usuarios
+  - Productos
+  - Transacciones
+end note
+
+@enduml
